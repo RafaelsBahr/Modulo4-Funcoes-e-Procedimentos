@@ -1,10 +1,8 @@
 # Exercício 18 – Parâmetros somente posicionais com /
 
-
 # Crie uma função chamada registrar_placar com a seguinte assinatura:
 
 # def registrar_placar(time_a: str,time_b: str,/,gols_a: int,gols_b: int) -> str:...
-
 
 # A função deve:
 
@@ -14,16 +12,35 @@
 # Exigir que time_a e time_b sejam passados somente por posição.
 # Permitir que gols_a e gols_b sejam passados por posição ou pelo nome.
 
-
 # Faça uma chamada válida utilizando:
 
 # resultado = registrar_placar("Brasil","Argentina",gols_a=2,gols_b=1)
 # print(resultado)
 
-
 # Depois, tente:
 
 # registrar_placar(time_a="Brasil",time_b="Argentina",gols_a=2,gols_b=1)
 
-
 # Observe o erro e explique em um comentário qual é a função do / na assinatura.
+
+def registrar_placar(time_a: str,time_b: str,/,gols_a: int,gols_b: int) -> str:
+    """Recebe os times e total de gols. Então apresenta placar da partida.
+    
+    Args:
+        time_a (str): Nome do time A
+        tome_b (str): Nome do time B
+        gols_a (int): Gols do time A
+        gols_b (int): Gols do time b
+        
+    Returns:
+        (str): String contendo placar da partida.
+    """
+    return (f"{time_a} {gols_a} x {gols_b} {time_b}")
+
+# registrar_placar(time_a="Brasil",time_b="Argentina",gols_a=2,gols_b=1)
+
+# O erro acontece porque a função exige que os 2 primeiros argumentos sejam posicionais, e "time_a="Brasil",time_b="Argentina"" é nomeado
+
+placar = registrar_placar("Brasil", "Argentina",gols_a=2,gols_b=1)
+
+print(placar)
